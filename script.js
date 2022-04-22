@@ -28,8 +28,42 @@ function displayBooks() {
         book.appendChild(authorDisplay);
 
         let pageDisplay = document.createElement("p");
-        pageDisplay.textContent = "Page Count: " + myLibrary [i].pages;
+        pageDisplay.textContent = "Page Count: " + myLibrary[i].pages;
         book.appendChild(pageDisplay);
+
+        let readDisplay = document.createElement("p");
+        if (myLibrary[i].read == true) {
+            readDisplay.textContent = "Read It?: Yes";
+        }
+        else {
+            readDisplay.textContent = "Read It?: No";
+        }
+        book.appendChild(readDisplay);
+
+        let buttons = document.createElement("div");
+        buttons.classList.add("buttons");
+
+        let changeReadStatusButton = document.createElement("button");
+        changeReadStatusButton.textContent = "Read";
+
+        changeReadStatusButton.addEventListener("click", function(e) {
+            if (myLibrary[i].read == true) {
+                readDisplay.textContent = "Read It?: No"
+                myLibrary[i].read = false;
+            }
+            else if (myLibrary[i].read == false) {
+                readDisplay.textContent = "Read It?: Yes";
+                myLibrary[i].read = true;
+            }
+        })
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove Book";
+
+        buttons.appendChild(changeReadStatusButton);
+        buttons.appendChild(deleteButton);
+
+        book.appendChild(buttons);
 
         bookContainer.appendChild(book);
     }
@@ -54,6 +88,7 @@ function clearPage() {
 let userTitle = "";
 let userAuthor = "";
 let userPages = 0;
+let readStatus = false;
 
 let submitButton = document.querySelector(".submit");
 submitButton.addEventListener("click", function(e) {
@@ -61,8 +96,9 @@ submitButton.addEventListener("click", function(e) {
     userTitle = document.getElementById("title").value;
     userAuthor = document.getElementById("author").value;
     userPages = document.getElementById("pages").value;
+    readStatus = document.getElementById("read").checked;
 
-    addBookToLibrary(userTitle, userAuthor, userPages, true);
+    addBookToLibrary(userTitle, userAuthor, userPages, readStatus);
     closeForm();
     clearPage();
     displayBooks();
