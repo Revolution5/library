@@ -12,8 +12,9 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
+let bookContainer = document.querySelector(".book-container")
+
 function displayBooks() {
-    let bookContainer = document.querySelector(".book-container")
     for(let i = 0; i < myLibrary.length; i++) {
         let book = document.createElement("div");
         book.classList.add("book");
@@ -41,33 +42,34 @@ function showForm() {
 
 function closeForm() {
     document.querySelector(".pop-up-form").style.display = "none";
-    document.querySelector("*").style.backgroundColor = "green";
+    document.querySelector("*").style.backgroundColor = "white";
 }
 
-let submitButton = document.querySelector("#submit");
+function clearPage() {
+    while(bookContainer.firstChild) {
+        bookContainer.removeChild(bookContainer.firstChild);
+    }
+}
+
+let userTitle = "";
+let userAuthor = "";
+let userPages = 0;
+
+let submitButton = document.querySelector(".submit");
 submitButton.addEventListener("click", function(e) {
-    let userAuthor = document.querySelector("#author");
-    let userTitle = document.querySelector("#title");
-    let userPages = document.querySelector("#pages");
+    
+    userTitle = document.getElementById("title").value;
+    userAuthor = document.getElementById("author").value;
+    userPages = document.getElementById("pages").value;
 
     addBookToLibrary(userTitle, userAuthor, userPages, true);
-    location.reload();
+    closeForm();
+    clearPage();
+    displayBooks();
+    
 })
 
-
-
-
-
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-addBookToLibrary("ac", "b", 111, true);
-
+addBookToLibrary("Example Title", "Example Author", 111, true);
 
 displayBooks();
+
