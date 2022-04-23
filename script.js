@@ -15,7 +15,7 @@ function addBookToLibrary(title, author, pages, read) {
 let bookContainer = document.querySelector(".book-container")
 
 function displayBooks() {
-    for(let i = 0; i < myLibrary.length; i++) {
+    for(let i = 0; i < myLibrary.length; ++i) {
         let book = document.createElement("div");
         book.classList.add("book");
 
@@ -59,6 +59,11 @@ function displayBooks() {
 
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "Remove Book";
+
+        deleteButton.addEventListener("click", function(e) {
+            myLibrary.splice(i, 1);
+            bookContainer.removeChild(book);
+        })
 
         buttons.appendChild(changeReadStatusButton);
         buttons.appendChild(deleteButton);
