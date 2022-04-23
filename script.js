@@ -16,6 +16,7 @@ let bookContainer = document.querySelector(".book-container")
 
 function displayBooks() {
     for(let i = 0; i < myLibrary.length; ++i) {
+        //Creating a book "card" for each book in the array
         let book = document.createElement("div");
         book.classList.add("book");
 
@@ -40,6 +41,7 @@ function displayBooks() {
         }
         book.appendChild(readDisplay);
 
+        //Toggle read and remove buttons
         let buttons = document.createElement("div");
         buttons.classList.add("buttons");
 
@@ -104,6 +106,7 @@ submitButton.addEventListener("click", function(e) {
     readStatus = document.getElementById("read").checked;
 
     addBookToLibrary(userTitle, userAuthor, userPages, readStatus);
+    //hide the pop-up form, clear any current books on the page, repopulate the page with a new array
     closeForm();
     clearPage();
     displayBooks();
