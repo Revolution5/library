@@ -64,7 +64,9 @@ function displayBooks() {
 
         deleteButton.addEventListener("click", function(e) {
             myLibrary.splice(i, 1);
-            bookContainer.removeChild(book);
+            // event listener does not change index, so have to clear and repopulate the page
+            clearPage();
+            displayBooks();
         })
 
         buttons.appendChild(changeReadStatusButton);
