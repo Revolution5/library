@@ -80,12 +80,12 @@ function displayBooks() {
 
 function showForm() {
     document.querySelector(".pop-up-form").style.display = "block";
-    document.querySelector("*").style.backgroundColor = "rgba(22,22,22,0.5)"
+    // document.querySelector("html").style.backgroundColor = "rgba(22,22,22,0.5)"
 }
 
 function closeForm() {
     document.querySelector(".pop-up-form").style.display = "none";
-    document.querySelector("*").style.backgroundColor = "white";
+    // document.querySelector("html").style.backgroundColor = "#e5e7eb";
 }
 
 function clearPage() {
