@@ -46,7 +46,7 @@ function displayBooks() {
         buttons.classList.add("buttons");
 
         let changeReadStatusButton = document.createElement("button");
-        changeReadStatusButton.textContent = "Read";
+        changeReadStatusButton.textContent = "Toggle Read";
 
         changeReadStatusButton.addEventListener("click", function(e) {
             if (myLibrary[i].read == true) {
